@@ -10,16 +10,14 @@
             $this->abasGasolina = array();
         }
         public function abastecer($litros) {
-            echo "Abastecendo..\n";
             if($this->LitrosGaso >= $litros){
-                echo "Carro Abastecido!\n";
-            }else
-                echo "Ta faltando gasolina\n";
+                return true;
+            }
 
         }
 
         public function reporEstoque($litros){
-            
+            $this->$LitrosGaso += $litros;
         }
 
         /**
@@ -58,12 +56,17 @@ do {
         
         case 1:
             $litros = readline("Quantos litros voce quer abastecer? \n");
-            $AutoPosto->abastecer($litros);
+            $retorno = $posto->abastecer($litros);
+            if($retorno){
+                echo "abastecimento realizado com sucesso ";
+            }else
+                echo "nao deu faltou litros"
 
             break;
 
         case 2:
-         
+            $litros = readline("informe a quantidade de litros: \n");
+            $AutoPosto->reporEstoque($litros);
             
                
             
